@@ -88,14 +88,14 @@
               	var color = randomColor();
               	event.target.setAttribute('material', 'color', color);
                 try {
-	                var oReq = new XMLHttpRequest();
+	                /*var oReq = new XMLHttpRequest();
 	                oReq.open("POST", "https://hooks.slack.com/services/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");
 	                oReq.send(JSON.stringify({
                 		"channel": "@igor.weigel",
                 		"username": "Reception",
                 		"text": "Someone is waiting for you at the bar",
                 		"icon_emoji": ":doughnut:",
-                	}));
+                	}));*/
                 } catch(err) {
                 	alert(err.message);
                 }
@@ -108,14 +108,14 @@
               	var color = randomColor();
               	event.target.setAttribute('material', 'color', color);
                 try {
-	                var oReq = new XMLHttpRequest();
+	                /*var oReq = new XMLHttpRequest();
 	                oReq.open("POST", "https://hooks.slack.com/services/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");
 	                oReq.send(JSON.stringify({
                 		"channel": "@igor.weigel",
                 		"username": "Reception",
                 		"text": "Someone is waiting for you at the bar",
                 		"icon_emoji": ":doughnut:",
-                	}));
+                	}));*/
                 } catch(err) {
                 	alert(err.message);
                 }
@@ -128,14 +128,14 @@
               	var color = randomColor();
               	event.target.setAttribute('material', 'color', color);
                 try {
-	                var oReq = new XMLHttpRequest();
+	                /*var oReq = new XMLHttpRequest();
 	                oReq.open("POST", "https://hooks.slack.com/services/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");
 	                oReq.send(JSON.stringify({
                 		"channel": "@cherylle.schwizer",
                 		"username": "Reception",
                 		"text": "Someone is waiting for you at the bar",
                 		"icon_emoji": ":doughnut:",
-                	}));
+                	}));*/
                 } catch(err) {
                 	alert(err.message);
                 }
@@ -192,7 +192,7 @@
 </script>
 
 <body style='margin : 0px; overflow: hidden;'>
-  <a-scene embedded arjs>
+  <a-scene embedded arjs="debugUIEnabled: false;">
     <a-marker id="marker-cube" preset="hiro" registerevents>
       <a-box id="cube" position='0 0 0' material='color: black;'/>
     </a-marker>
