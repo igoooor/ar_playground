@@ -55,9 +55,35 @@
               	var color = colors[Math.floor(Math.random()*colors.length)];
               	event.target.setAttribute('material', 'color', color);
                 try {
+
+
+                	/*
 	                var oReq = new XMLHttpRequest();
 	                oReq.open("GET", "https://local.iwapp.fr/action/339/239");
 	                oReq.send();
+					*/
+
+
+/*
+                	var data = 'payload=' + JSON.stringify({
+                		"channel": "@igor.weigel",
+                		"username": "Reception",
+                		"text": "Someone is waiting for you at the bar",
+                		"icon_emoji": ":doughnut:",
+                	});
+*/
+                	var data = 'payload={\\"channel\\": \\"@igor.weigel\\", \\"username\\": \\"Reception\\", \\"text\\": \\"Someone is waiting for you at the bar\\", \\"icon_emoji\\": \\":doughnut:\\"}'
+	                var oReq = new XMLHttpRequest();
+	                oReq.open("POST", "https://hooks.slack.com/services/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");
+	                oReq.send(JSON.stringify({
+                		"channel": "@igor.weigel",
+                		"username": "Reception",
+                		"text": "Someone is waiting for you at the bar",
+                		"icon_emoji": ":doughnut:",
+                	}));
+
+
+
                 } catch(err) {
                 	alert(err.message);
                 }
