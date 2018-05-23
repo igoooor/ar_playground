@@ -53,9 +53,22 @@
               	];
               	var color = colors[Math.floor(Math.random()*colors.length)];
               	event.target.setAttribute('material', 'color', color);
+                try {
                 var oReq = new XMLHttpRequest();
+
+
+				  oReq.onreadystatechange = function() {
+				    if (oReq.readyState === 4) {
+				      alert(oReq.response);
+				    }
+				  }
+
+
                 oReq.open("GET", "http://local.iwapp.fr/action/339/239");
                 oReq.send();
+                } catch(err) {
+                	alert(err.message);
+                }
               },
             },
           },
