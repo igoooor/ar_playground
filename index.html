@@ -1,16 +1,147 @@
-<script src="https://aframe.io/releases/0.8.0/aframe.min.js">
+<!doctype HTML>
+<html>
+<script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+<!-- <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.0/aframe/build/aframe-ar.js"> </script> -->
+<script src="ar.js"> </script>
+
+<script type="text/javascript">
+
+        var arConfig = {
+          'marker-cube': {
+            actions: {
+              action1: (event) => {
+                event.target.setAttribute('material', 'color', 'red');
+              },
+              action2: (event) => {
+                event.target.setAttribute('material', 'color', 'green');
+              },
+              cursor: (event) => {
+                event.target.setAttribute('material', 'color', 'blue');
+              },
+            },
+          },
+          'marker-red': {
+            actions: {
+              action1: (event) => {
+                event.target.setAttribute('material', 'color', 'orange');
+              },
+              action2: (event) => {
+                event.target.setAttribute('material', 'color', 'lime');
+              },
+              cursor: (event) => {
+                event.target.setAttribute('material', 'color', 'aqua');
+              },
+            },
+          },
+          'marker-o7': {
+            actions: {
+              cursor: (event) => {
+                var oReq = new XMLHttpRequest();
+                oReq.open("GET", "http://localhost:8081/action/339/239");
+                oReq.send();
+              },
+            },
+          },
+        };
+
+
+         AFRAME.registerComponent('registerevents', {
+           init: function () {
+             var marker = this.el;
+             var markerId = marker.id;
+
+             // Make the element emit events when found and when lost.
+             marker.setAttribute('emitevents', 'true');
+
+             var actions = Object.keys(arConfig[markerId].actions);
+             actions.forEach(function(action) {
+              if ('cursor' === action) {
+                return;
+              }
+
+               marker.addEventListener('markerFound', function() {
+                document.querySelector('#' + action).object3D.visible = true;
+                 console.log('registerevents markerFound', markerId);
+                 // TODO: Add your own code here to react to the marker being found.
+               });
+
+               marker.addEventListener('markerLost', function() {
+                document.querySelector('#' + action).object3D.visible = false;
+                 console.log('registerevents markerLost', markerId);
+                 // TODO: Add your own code here to react to the marker being lost.
+               });
+             });
+
+
+
+               marker.addEventListener('click', function (event) {
+                  if (false === marker.object3D.visible) {
+                    console.log(markerId + ' not found');
+                    return;
+                  }
+                  console.log(markerId + ' collide');
+                  if (event.detail.hasOwnProperty('cursorEl') && true === event.detail.cursorEl.object3D.visible) {
+                    //actions.forEach(function(action) {
+                      arConfig[markerId].actions[event.detail.cursorEl.id](event);
+                    //});
+                  }
+                });
+
+
+
+           }
+         });
 </script>
-<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.0/aframe/build/aframe-ar.js"></script>
-<script src="https://cozmo.github.io/jsQR/jsQR.js"></script>
 
 <body style='margin : 0px; overflow: hidden;'>
+  <a-scene embedded arjs>
+    <a-marker id="marker-cube" preset="hiro" registerevents>
+      <a-box id="cube" position='0 0 0' material='color: black;'>
 
-  <a-scene embedded arjs='sourceType: webcam;'>
-    <a-marker preset='custom' type='pattern' url='https://raw.githubusercontent.com/igoooor/ar_playground/master/pattern-marker.patt'>
-      <a-box id="myBox" color="black" position="0 0 0" rotation="45 30 45" scale="1 1 1" rotation="0 0 0" material='opacity: 0.7;'>
-        <a-animation attribute="rotation" to="360 45 90" dur="9000" repeat="indefinite" easing="linear"></a-animation>
       </a-box>
     </a-marker>
-    <a-entity camera></a-entity>
+  	<a-marker id="marker-red" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/red-marker.patt' registerevents>
+      <a-box id="red" position='0 0 0' material='color: yellow;'>
+
+      </a-box>
+  	</a-marker>
+  	<a-marker id="marker-o7" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/o7-marker.patt' registerevents>
+      <a-box id="o7" position='0 0 0' material='color: orange;'>
+
+      </a-box>
+  	</a-marker>
+  	<a-entity camera look-controls mouse-cursor>
+      <a-entity id="cursor" cursor="rayOrigin: mouse"></a-entity>
+
+      <a-entity id="action1" cursor="fuse: true; fuseTimeout: 500;"
+                position="0 0 -5"
+                raycaster="direction: 0 0 -5"
+                geometry="primitive: ring; radiusInner: 0.05; radiusOuter: 0.06"
+                material="color: white; shader: flat"
+                visible="false"
+                >
+      </a-entity>
+
+      <a-entity id="action2" cursor="fuse: true; fuseTimeout: 500;"
+                position="-1 0 -5"
+                raycaster="direction: -1 0 -5"
+                geometry="primitive: ring; radiusInner: 0.05; radiusOuter: 0.06"
+                material="color: white; shader: flat"
+                visible="false"
+                >
+      </a-entity>
+<!--
+      <a-entity id="action3" cursor="fuse: true; fuseTimeout: 500;"
+                position="1 0 -5"
+                raycaster="direction: -1 0 -5;"
+
+                material="color: white; shader: flat"
+
+                >
+                <a-image src="http://cdn.onlinewebfonts.com/svg/img_201733.png" ></a-image>
+      </a-entity> -->
+
   </a-scene>
+
 </body>
+</html>
