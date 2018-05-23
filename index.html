@@ -35,9 +35,9 @@
           },
           'marker-o7': {
             actions: {
-              cursor: (event) => {
+              action1: (event) => {
                 var oReq = new XMLHttpRequest();
-                oReq.open("GET", "http://localhost:8081/action/339/239");
+                oReq.open("GET", "http://local.iwapp.fr/action/339/239");
                 oReq.send();
               },
             },
@@ -96,17 +96,17 @@
 <body style='margin : 0px; overflow: hidden;'>
   <a-scene embedded arjs>
     <a-marker id="marker-cube" preset="hiro" registerevents>
-      <a-box id="cube" position='0 0 0' material='color: black;'>
+      <a-box id="cube" position='0 0.5 0' material='color: black;'>
 
       </a-box>
     </a-marker>
   	<a-marker id="marker-red" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/red-marker.patt' registerevents>
-      <a-box id="red" position='0 0 0' material='color: yellow;'>
+      <a-box id="red" position='0 0.5 0' material='color: yellow;'>
 
       </a-box>
   	</a-marker>
   	<a-marker id="marker-o7" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/o7-marker.patt' registerevents>
-      <a-box id="o7" position='0 0 0' material='color: orange;'>
+      <a-box id="o7" position='0 0.5 0' material='color: orange;'>
 
       </a-box>
   	</a-marker>
