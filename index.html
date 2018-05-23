@@ -54,6 +54,7 @@
               },
             },
           },
+          /*
           'marker-o7': {
             actions: {
               action1: (event) => {
@@ -69,9 +70,10 @@
               },
             },
           },
+          */
           'marker-2og_hallway': {
             actions: {
-              action1: (event) => {
+              cursor: (event) => {
                 try {
 	                var oReq = new XMLHttpRequest();
 	                oReq.open("GET", "https://local.iwapp.fr/action/239,404");
@@ -199,11 +201,12 @@
   	<a-marker id="marker-red" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/red-marker.patt' registerevents>
       <a-box id="red" position='0 0 0' material='color: yellow;'/>
   	</a-marker>
-  	<a-marker id="marker-o7" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/o7-marker.patt' registerevents>
+  	<!-- <a-marker id="marker-o7" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/o7-marker.patt' registerevents>
       <a-box id="o7" position='0 0 0' material='color: orange;'/>
-  	</a-marker>
+  	</a-marker> -->
   	<a-marker id="marker-2og_hallway" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/2og_hallway-marker.patt' registerevents>
       <a-image src="https://raw.githubusercontent.com/igoooor/ar_playground/master/light-bulb-icon.png" rotation="-90 0 0"/>
+      <a-text value="Press me!" position="-0.5 -0.5 0"/>
   	</a-marker>
   	<a-marker id="marker-lukas" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/lukas-txt-marker.patt' registerevents>
       <a-image src="https://raw.githubusercontent.com/igoooor/ar_playground/master/lukas.png" rotation="-90 0 0"/>
