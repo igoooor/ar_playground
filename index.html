@@ -62,6 +62,12 @@
                 try {
 
 	                var oReq = new XMLHttpRequest();
+
+				  xhr.onreadystatechange = function() {
+				    if (xhr.readyState === 4) {
+				      alert(xhr.response);
+				    }
+				  }
 	                oReq.open("GET", "https://local.iwapp.fr/action/239,273,1202");
 	                oReq.send();
 
