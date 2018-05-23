@@ -36,6 +36,23 @@
           'marker-o7': {
             actions: {
               action1: (event) => {
+              	var colors = [
+              		'red',
+					'green',
+					'blue',
+					'orange',
+					'lime',
+					'aqua',
+					'maroon',
+					'yellow',
+					'olive',
+					'purple',
+					'fuchsia',
+					'teal',
+					'navy',
+              	];
+              	var color = colors[Math.floor(Math.random()*colors.length)];
+              	event.target.setAttribute('material', 'color', color);
                 var oReq = new XMLHttpRequest();
                 oReq.open("GET", "http://local.iwapp.fr/action/339/239");
                 oReq.send();
