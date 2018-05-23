@@ -60,19 +60,22 @@
               	var color = randomColor();
               	event.target.setAttribute('material', 'color', color);
                 try {
-
 	                var oReq = new XMLHttpRequest();
-
-				  oReq.onreadystatechange = function() {
-				    if (oReq.readyState === 4) {
-				      alert(oReq.response);
-				    }
-				  }
 	                oReq.open("GET", "https://local.iwapp.fr/action/239,273,1202");
 	                oReq.send();
-
-
-
+                } catch(err) {
+                	alert(err.message);
+                }
+              },
+            },
+          },
+          'marker-2og_hallway': {
+            actions: {
+              action1: (event) => {
+                try {
+	                var oReq = new XMLHttpRequest();
+	                oReq.open("GET", "https://local.iwapp.fr/action/239,404");
+	                oReq.send();
                 } catch(err) {
                 	alert(err.message);
                 }
@@ -178,9 +181,7 @@
                   }
                   console.log(markerId + ' collide');
                   if (event.detail.hasOwnProperty('cursorEl') && true === event.detail.cursorEl.object3D.visible) {
-                    //actions.forEach(function(action) {
                       arConfig[markerId].actions[event.detail.cursorEl.id](event);
-                    //});
                   }
                 });
 
@@ -193,31 +194,25 @@
 <body style='margin : 0px; overflow: hidden;'>
   <a-scene embedded arjs>
     <a-marker id="marker-cube" preset="hiro" registerevents>
-      <a-box id="cube" position='0 0 0' material='color: black;'>
-
-      </a-box>
+      <a-box id="cube" position='0 0 0' material='color: black;'/>
     </a-marker>
   	<a-marker id="marker-red" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/red-marker.patt' registerevents>
-      <a-box id="red" position='0 0 0' material='color: yellow;'>
-
-      </a-box>
+      <a-box id="red" position='0 0 0' material='color: yellow;'/>
   	</a-marker>
   	<a-marker id="marker-o7" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/o7-marker.patt' registerevents>
-      <a-box id="o7" position='0 0 0' material='color: orange;'>
-
-      </a-box>
+      <a-box id="o7" position='0 0 0' material='color: orange;'/>
+  	</a-marker>
+  	<a-marker id="marker-2og_hallway" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/2og_hallway-marker.patt' registerevents>
+      <a-image src="https://raw.githubusercontent.com/igoooor/ar_playground/master/light-bulb-icon.png" rotation="-90 0 0"/>
   	</a-marker>
   	<a-marker id="marker-lukas" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/lukas-txt-marker.patt' registerevents>
-
-      <a-image src="https://raw.githubusercontent.com/igoooor/ar_playground/master/lukas.png" rotation="-90 0 0"></a-image>
+      <a-image src="https://raw.githubusercontent.com/igoooor/ar_playground/master/lukas.png" rotation="-90 0 0"/>
   	</a-marker>
   	<a-marker id="marker-wanja" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/wanja-marker.patt' registerevents>
-
-      <a-image src="https://raw.githubusercontent.com/igoooor/ar_playground/master/wanja.png" rotation="-90 0 0"></a-image>
+      <a-image src="https://raw.githubusercontent.com/igoooor/ar_playground/master/wanja.png" rotation="-90 0 0"/>
   	</a-marker>
   	<a-marker id="marker-cherylle" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/cherylle-marker.patt' registerevents>
-
-      <a-image src="https://raw.githubusercontent.com/igoooor/ar_playground/master/cherylle.png" rotation="-90 0 0"></a-image>
+      <a-image src="https://raw.githubusercontent.com/igoooor/ar_playground/master/cherylle.png" rotation="-90 0 0"/>
   	</a-marker>
   	<a-entity camera mouse-cursor>
       <a-entity id="cursor" cursor="fuse: false; rayOrigin: mouse"></a-entity>
@@ -249,7 +244,7 @@
                 >
                 <a-image src="http://cdn.onlinewebfonts.com/svg/img_201733.png" ></a-image>
       </a-entity> -->
-  </a-entity>
+  	</a-entity>
   </a-scene>
 
 </body>
