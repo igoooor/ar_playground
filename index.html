@@ -158,14 +158,14 @@
   	</a-marker>
   	<a-marker id="marker-lukas" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/lukas-txt-marker.patt' registerevents>
 
-      <a-image src="lukas.png" rotation="-90 0 0"></a-image>
+      <a-image src="https://raw.githubusercontent.com/igoooor/ar_playground/master/lukas.png" rotation="-90 0 0"></a-image>
   	</a-marker>
   	<a-entity camera mouse-cursor>
       <a-entity id="cursor" cursor="fuse: false; rayOrigin: mouse"></a-entity>
 
       <a-entity id="action1" cursor="fuse: true; fuseTimeout: 500;"
-                position="0 0 -5"
-                raycaster="direction: 0 0 -5"
+                position="0 -1 -5"
+                raycaster="direction: 0 -1 -5"
                 geometry="primitive: ring; radiusInner: 0.05; radiusOuter: 0.06"
                 material="color: white; shader: flat"
                 visible="false"
@@ -173,8 +173,8 @@
       </a-entity>
 
       <a-entity id="action2" cursor="fuse: true; fuseTimeout: 500;"
-                position="-1 0 -5"
-                raycaster="direction: -1 0 -5"
+                position="-1 -1 -5"
+                raycaster="direction: -1 -1 -5"
                 geometry="primitive: ring; radiusInner: 0.05; radiusOuter: 0.06"
                 material="color: white; shader: flat"
                 visible="false"
