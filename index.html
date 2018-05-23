@@ -22,6 +22,11 @@
 		'navy',
   	];
 
+	function randomColor() {
+		return colors[Math.floor(Math.random()*colors.length)];
+	}
+
+
         var arConfig = {
           'marker-cube': {
             actions: {
@@ -52,7 +57,7 @@
           'marker-o7': {
             actions: {
               action1: (event) => {
-              	var color = colors[Math.floor(Math.random()*colors.length)];
+              	var color = randomColor();
               	event.target.setAttribute('material', 'color', color);
                 try {
 
@@ -71,7 +76,7 @@
           'marker-lukas': {
             actions: {
               action1: (event) => {
-              	var color = colors[Math.floor(Math.random()*colors.length)];
+              	var color = randomColor();
               	event.target.setAttribute('material', 'color', color);
                 try {
 	                var oReq = new XMLHttpRequest();
@@ -91,7 +96,7 @@
           'marker-wanja': {
             actions: {
               action1: (event) => {
-              	var color = colors[Math.floor(Math.random()*colors.length)];
+              	var color = randomColor();
               	event.target.setAttribute('material', 'color', color);
                 try {
 	                var oReq = new XMLHttpRequest();
@@ -111,13 +116,13 @@
           'marker-cherylle': {
             actions: {
               action1: (event) => {
-              	var color = colors[Math.floor(Math.random()*colors.length)];
+              	var color = randomColor();
               	event.target.setAttribute('material', 'color', color);
                 try {
 	                var oReq = new XMLHttpRequest();
 	                oReq.open("POST", "https://hooks.slack.com/services/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");
 	                oReq.send(JSON.stringify({
-                		"channel": "@igor.weigel",
+                		"channel": "@cherylle.schwizer",
                 		"username": "Reception",
                 		"text": "Someone is waiting for you at the bar",
                 		"icon_emoji": ":doughnut:",
