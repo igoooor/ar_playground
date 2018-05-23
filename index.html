@@ -6,6 +6,22 @@
 
 <script type="text/javascript">
 
+	var colors = [
+  		'red',
+		'green',
+		'blue',
+		'orange',
+		'lime',
+		'aqua',
+		'maroon',
+		'yellow',
+		'olive',
+		'purple',
+		'fuchsia',
+		'teal',
+		'navy',
+  	];
+
         var arConfig = {
           'marker-cube': {
             actions: {
@@ -36,36 +52,33 @@
           'marker-o7': {
             actions: {
               action1: (event) => {
-              	var colors = [
-              		'red',
-					'green',
-					'blue',
-					'orange',
-					'lime',
-					'aqua',
-					'maroon',
-					'yellow',
-					'olive',
-					'purple',
-					'fuchsia',
-					'teal',
-					'navy',
-              	];
               	var color = colors[Math.floor(Math.random()*colors.length)];
               	event.target.setAttribute('material', 'color', color);
                 try {
-                var oReq = new XMLHttpRequest();
-
-
-				  oReq.onreadystatechange = function() {
-				    if (oReq.readyState === 4) {
-				      alert(oReq.response);
-				    }
-				  }
-
-
-                oReq.open("GET", "https://local.iwapp.fr/action/339/239");
-                oReq.send();
+	                var oReq = new XMLHttpRequest();
+	                oReq.open("GET", "https://local.iwapp.fr/action/339/239");
+	                oReq.send();
+                } catch(err) {
+                	alert(err.message);
+                }
+              },
+            },
+          },
+          'marker-lukas': {
+            actions: {
+              action1: (event) => {
+              	var color = colors[Math.floor(Math.random()*colors.length)];
+              	event.target.setAttribute('material', 'color', color);
+                try {
+                	var data = 'payload=' + JSON.stringify({
+                		"channel": "@igor.weigel",
+                		"username": "Reception",
+                		"text": "Someone is waiting for you at the bar",
+                		"icon_emoji": ":doughnut:",
+                	});
+	                var oReq = new XMLHttpRequest();
+	                oReq.open("POST", "https://hooks.slack.com/services/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");
+	                oReq.send(data);
                 } catch(err) {
                 	alert(err.message);
                 }
@@ -137,6 +150,11 @@
   	</a-marker>
   	<a-marker id="marker-o7" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/o7-marker.patt' registerevents>
       <a-box id="o7" position='0 0.5 0' material='color: orange;'>
+
+      </a-box>
+  	</a-marker>
+  	<a-marker id="marker-lukas" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/lukas-marker.patt' registerevents>
+      <a-box id="lukas" position='0 0.5 0' material='color: navy;'>
 
       </a-box>
   	</a-marker>
