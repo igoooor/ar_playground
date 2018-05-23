@@ -88,6 +88,46 @@
               },
             },
           },
+          'marker-wanja': {
+            actions: {
+              action1: (event) => {
+              	var color = colors[Math.floor(Math.random()*colors.length)];
+              	event.target.setAttribute('material', 'color', color);
+                try {
+	                var oReq = new XMLHttpRequest();
+	                oReq.open("POST", "https://hooks.slack.com/services/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");
+	                oReq.send(JSON.stringify({
+                		"channel": "@igor.weigel",
+                		"username": "Reception",
+                		"text": "Someone is waiting for you at the bar",
+                		"icon_emoji": ":doughnut:",
+                	}));
+                } catch(err) {
+                	alert(err.message);
+                }
+              },
+            },
+          },
+          'marker-cherylle': {
+            actions: {
+              action1: (event) => {
+              	var color = colors[Math.floor(Math.random()*colors.length)];
+              	event.target.setAttribute('material', 'color', color);
+                try {
+	                var oReq = new XMLHttpRequest();
+	                oReq.open("POST", "https://hooks.slack.com/services/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");
+	                oReq.send(JSON.stringify({
+                		"channel": "@igor.weigel",
+                		"username": "Reception",
+                		"text": "Someone is waiting for you at the bar",
+                		"icon_emoji": ":doughnut:",
+                	}));
+                } catch(err) {
+                	alert(err.message);
+                }
+              },
+            },
+          },
         };
 
 
@@ -159,6 +199,14 @@
   	<a-marker id="marker-lukas" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/lukas-txt-marker.patt' registerevents>
 
       <a-image src="https://raw.githubusercontent.com/igoooor/ar_playground/master/lukas.png" rotation="-90 0 0"></a-image>
+  	</a-marker>
+  	<a-marker id="marker-wanja" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/wanja-marker.patt' registerevents>
+
+      <a-image src="https://raw.githubusercontent.com/igoooor/ar_playground/master/wanja.png" rotation="-90 0 0"></a-image>
+  	</a-marker>
+  	<a-marker id="marker-cherylle" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/cherylle-marker.patt' registerevents>
+
+      <a-image src="https://raw.githubusercontent.com/igoooor/ar_playground/master/cherylle.png" rotation="-90 0 0"></a-image>
   	</a-marker>
   	<a-entity camera mouse-cursor>
       <a-entity id="cursor" cursor="fuse: false; rayOrigin: mouse"></a-entity>
