@@ -3,6 +3,7 @@
 <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
 <!-- <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.0/aframe/build/aframe-ar.js"> </script> -->
 <script src="ar.js"> </script>
+<!-- <script src="gps.js"> </script> -->
 
 <script type="text/javascript">
 
@@ -196,6 +197,9 @@
     <a-marker id="marker-cube" preset="hiro" registerevents>
       <a-box id="cube" position='0 0 0' material='color: black;'/>
     </a-marker>
+  	<a-marker id="marker-readme" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/markers/readme-marker.patt' registerevents>
+      <a-text value="salut comment ca va" position="-0.5 -0.5 0" rotation="-90 0 0"/>
+  	</a-marker>
   	<a-marker id="marker-red" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/markers/red-marker.patt' registerevents>
       <a-box id="red" position='0 0 0' material='color: yellow;'/>
   	</a-marker>
@@ -205,9 +209,6 @@
   	<a-marker id="marker-2og_hallway" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/markers/2og_hallway-marker.patt' registerevents>
       <a-image src="https://raw.githubusercontent.com/igoooor/ar_playground/master/images/light-bulb-icon.png" rotation="-90 0 0"/>
       <a-text value="Press me!" position="-0.5 -0.5 0"/>
-  	</a-marker>
-  	<a-marker id="marker-lukas" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/markers/lukas-marker.patt' registerevents>
-      <a-image src="https://raw.githubusercontent.com/igoooor/ar_playground/master/images/lukas.png" rotation="-90 0 0"/>
   	</a-marker>
   	<a-marker id="marker-wanja" preset="custom" type="pattern" url='https://raw.githubusercontent.com/igoooor/ar_playground/master/markers/wanja-marker.patt' registerevents>
       <a-image src="https://raw.githubusercontent.com/igoooor/ar_playground/master/images/wanja.png" rotation="-90 0 0"/>
